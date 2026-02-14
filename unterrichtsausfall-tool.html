@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modell 1886 – Unterrichtsausfall Abschlussklassen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #722F37;
+            --burgundy-dark: #5a252c;
+            --burgundy-light: #8b3d47;
+            --cream: #faf8f5;
+            --warm-white: #fffefb;
+            --charcoal: #2d2d2d;
+            --soft-gray: #6b6b6b;
+            --accent-gold: #c9a227;
+            --success-green: #2d6a4f;
+            --warning-amber: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(145deg, var(--cream) 0%, #f0ebe3 100%);
+            min-height: 100vh;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--burgundy);
+            color: var(--warm-white);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-gray);
+            font-weight: 300;
+        }
+
+        .card {
+            background: var(--warm-white);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 
+                0 4px 6px -1px rgba(114, 47, 55, 0.08),
+                0 10px 20px -5px rgba(114, 47, 55, 0.12);
+            border: 1px solid rgba(114, 47, 55, 0.06);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--burgundy);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, var(--cream) 0%, #f5f0e8 100%);
+            border-left: 4px solid var(--burgundy);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 2rem;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: var(--soft-gray);
+        }
+
+        .info-box strong {
+            color: var(--burgundy);
+        }
+
+        .slider-section {
+            margin: 2rem 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .slider-label span {
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .slider-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--burgundy);
+        }
+
+        .slider-value small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--soft-gray);
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            background: var(--warm-white);
+            border: 4px solid var(--burgundy);
+            border-radius: 50%;
+            cursor: grab;
+            box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 16px rgba(114, 47, 55, 0.4);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:active {
+            cursor: grabbing;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            background: var(--warm-white);
+            border: 4px solid var(--burgundy);
+            border-radius: 50%;
+            cursor: grab;
+            box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .result-box {
+            background: var(--cream);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(114, 47, 55, 0.15);
+        }
+
+        .result-box.highlight {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            color: var(--warm-white);
+        }
+
+        .result-box.highlight .result-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .result-box.highlight .result-number {
+            color: var(--warm-white);
+        }
+
+        .result-box.warning {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid var(--warning-amber);
+        }
+
+        .result-box.warning .result-number {
+            color: var(--warning-amber);
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            line-height: 1;
+        }
+
+        .result-unit {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .result-secondary {
+            font-size: 0.9rem;
+            color: var(--soft-gray);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(114, 47, 55, 0.2);
+        }
+
+        .result-box.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .result-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .result-column {
+            text-align: center;
+        }
+
+        .result-divider {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .kursart-section {
+            margin-top: 2rem;
+        }
+
+        .kursart-label {
+            display: block;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .kursart-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .kursart-option {
+            cursor: pointer;
+        }
+
+        .kursart-option input {
+            display: none;
+        }
+
+        .kursart-btn {
+            display: block;
+            padding: 1rem;
+            background: var(--cream);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .kursart-option input:checked + .kursart-btn {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            border-color: var(--burgundy);
+            color: var(--warm-white);
+        }
+
+        .kursart-option:hover .kursart-btn {
+            border-color: var(--burgundy-light);
+            transform: translateY(-2px);
+        }
+
+        .kursart-title {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .kursart-factor {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+
+        .bilanz-card {
+            background: linear-gradient(135deg, var(--warm-white) 0%, #f8f5f0 100%);
+        }
+
+        .bilanz-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .bilanz-item {
+            background: var(--cream);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .bilanz-item.negative {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+        }
+
+        .bilanz-item.negative .bilanz-value {
+            color: #dc2626;
+        }
+
+        .bilanz-item.positive {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+        }
+
+        .bilanz-item.positive .bilanz-value {
+            color: #16a34a;
+        }
+
+        .bilanz-item.result {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            color: var(--warm-white);
+            min-width: 180px;
+        }
+
+        .bilanz-item.result .bilanz-label,
+        .bilanz-item.result .bilanz-unit {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .bilanz-item.result .bilanz-value {
+            color: var(--warm-white);
+        }
+
+        .bilanz-item.result.surplus {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+
+        .bilanz-label {
+            font-size: 0.8rem;
+            color: var(--soft-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .bilanz-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .bilanz-unit {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .bilanz-operator {
+            font-size: 1.5rem;
+            color: var(--soft-gray);
+            font-weight: 300;
+        }
+
+        .bilanz-bar-container {
+            margin-top: 1.5rem;
+        }
+
+        .bilanz-bar {
+            height: 32px;
+            background: var(--cream);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .bilanz-bar-minus {
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+            transition: width 0.5s ease;
+        }
+
+        .bilanz-bar-korrektur {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+            transition: width 0.5s ease;
+        }
+
+        .bilanz-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--soft-gray);
+        }
+
+        /* Dynamische Korrekturklassen */
+        .korrektur-klasse {
+            background: var(--cream);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .korrektur-klasse:hover {
+            border-color: rgba(114, 47, 55, 0.2);
+        }
+
+        .korrektur-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .korrektur-nummer {
+            font-weight: 600;
+            color: var(--burgundy);
+            font-size: 0.9rem;
+        }
+
+        .remove-korrektur {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-korrektur:hover {
+            background: #ef4444;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .korrektur-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 600px) {
+            .korrektur-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .korrektur-schueler {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .korrektur-schueler label {
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+        }
+
+        .schueler-input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .schueler-input {
+            width: 70px;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid rgba(114, 47, 55, 0.2);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--burgundy);
+            background: var(--warm-white);
+            transition: border-color 0.2s ease;
+        }
+
+        .schueler-input:focus {
+            outline: none;
+            border-color: var(--burgundy);
+        }
+
+        .schueler-input-label {
+            font-size: 0.9rem;
+            color: var(--soft-gray);
+        }
+
+        .kursart-mini {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .kursart-mini-option {
+            cursor: pointer;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .kursart-mini-option input {
+            display: none;
+        }
+
+        .kursart-mini-btn {
+            display: block;
+            padding: 0.75rem 0.5rem;
+            background: var(--warm-white);
+            border: 2px solid rgba(114, 47, 55, 0.15);
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+        }
+
+        .kursart-mini-option input:checked + .kursart-mini-btn {
+            background: var(--burgundy);
+            border-color: var(--burgundy);
+            color: var(--warm-white);
+        }
+
+        .kursart-mini-option:hover .kursart-mini-btn {
+            border-color: var(--burgundy-light);
+        }
+
+        .kursart-mini-title {
+            display: block;
+            font-weight: 600;
+        }
+
+        .kursart-mini-factor {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.15rem;
+        }
+
+        .korrektur-ergebnis {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(114, 47, 55, 0.2);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .korrektur-ergebnis-item {
+            text-align: right;
+        }
+
+        .korrektur-ergebnis-label {
+            color: var(--soft-gray);
+            font-size: 0.8rem;
+        }
+
+        .korrektur-ergebnis-value {
+            font-weight: 700;
+            color: var(--burgundy);
+            font-size: 1.1rem;
+        }
+
+        .add-korrektur-btn {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px dashed rgba(114, 47, 55, 0.3);
+            border-radius: 1rem;
+            color: var(--burgundy);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-korrektur-btn:hover {
+            background: rgba(114, 47, 55, 0.05);
+            border-color: var(--burgundy);
+            transform: translateY(-2px);
+        }
+
+        .add-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--burgundy);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        .korrektur-summe {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            color: var(--warm-white);
+        }
+
+        .summe-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .summe-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .summe-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .summe-unit {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .summe-divider {
+            margin: 0 0.5rem;
+            opacity: 0.6;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--soft-gray);
+            font-style: italic;
+        }
+
+        .calculation-breakdown {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--cream);
+        }
+
+        .breakdown-title {
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed rgba(114, 47, 55, 0.15);
+        }
+
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: var(--soft-gray);
+        }
+
+        .breakdown-value {
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: var(--burgundy);
+            color: var(--warm-white);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .visual-bar {
+            margin-top: 2rem;
+        }
+
+        .bar-label {
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-container {
+            height: 24px;
+            background: var(--cream);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(114, 47, 55, 0.1);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .result-number {
+                font-size: 2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">Modell 1886</span>
+            <h1>Unterrichtsausfall Abschlussklassen</h1>
+            <p class="subtitle">Berechnung der Minusstunden & Verrechnung mit Abitur-Korrekturen</p>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📊</div>
+                <h2 class="card-title">Berechnungsgrundlage</h2>
+            </div>
+
+            <div class="info-box">
+                <p>
+                    <strong>Zeitraum:</strong> Kalenderwoche 16 bis 29 = <strong>14 Wochen</strong><br>
+                    <strong>Abzüge:</strong> 11 Tage (Feiertage, bewegliche Ferientage, letzte Schulwoche)<br>
+                    <strong>Effektiv:</strong> 70 Schultage − 11 = <strong>59 Schultage</strong> (≙ 11,8 Wochen)
+                </p>
+            </div>
+
+            <div class="slider-section">
+                <div class="slider-label">
+                    <span>Wochenstunden in Abschlussklassen</span>
+                    <span class="slider-value"><span id="stunden-value">4</span> <small>Std./Woche</small></span>
+                </div>
+                <input type="range" id="stunden-slider" min="1" max="20" value="4" step="1">
+            </div>
+
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-label">Unterricht entfällt</div>
+                    <div class="result-number" id="unterricht-ausfall">47,2</div>
+                    <span class="result-unit">Schulstunden (45')</span>
+                    <div class="result-secondary" id="unterricht-zeit">35,4 Zeitstunden</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-label">Kategorie 1 <span class="category-tag">unterrichtsnah</span></div>
+                    <div class="result-number" id="kat1-entlastung">47,2</div>
+                    <span class="result-unit">Schulstunden (45')</span>
+                    <div class="result-secondary" id="kat1-zeit">35,4 Zeitstunden</div>
+                </div>
+            </div>
+
+            <div class="results-grid" style="margin-top: 1.5rem;">
+                <div class="result-box highlight full-width">
+                    <div class="result-label">⚠️ Minusstunden gesamt (Unterricht + Kategorie 1)</div>
+                    <div class="result-row">
+                        <div class="result-column">
+                            <div class="result-number" id="minus-stunden">94,4</div>
+                            <span class="result-unit">Schulstunden (45')</span>
+                        </div>
+                        <div class="result-divider">=</div>
+                        <div class="result-column">
+                            <div class="result-number" id="minus-zeit">70,8</div>
+                            <span class="result-unit">Zeitstunden (60')</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-bar">
+                <div class="bar-label">Anteil am Halbjahres-Deputat (bei 25,5 Std. Regeldeputat)</div>
+                <div class="bar-container">
+                    <div class="bar-fill" id="anteil-bar" style="width: 18%"></div>
+                </div>
+            </div>
+
+            <div class="calculation-breakdown">
+                <div class="breakdown-title">
+                    📐 Berechnungsweg
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-label">Ausgangszeitraum</span>
+                    <span class="breakdown-value">14 Wochen × 5 Tage = 70 Schultage</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-label">Abzüge (Feiertage etc.)</span>
+                    <span class="breakdown-value">− 11 Tage</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-label">Effektive Schultage</span>
+                    <span class="breakdown-value">59 Tage (≙ 11,8 Wochen)</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-label">Entfall Unterricht</span>
+                    <span class="breakdown-value" id="berechnung-unterricht">4 Std./Wo. × 11,8 Wo. = 47,2 Schulstd.</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-label">Entfall Kategorie 1 (1:1)</span>
+                    <span class="breakdown-value" id="berechnung-kat1">= 47,2 Schulstd.</span>
+                </div>
+                <div class="breakdown-row" style="background: rgba(114, 47, 55, 0.08); margin: 0 -1.5rem; padding: 0.75rem 1.5rem; border-radius: 8px;">
+                    <span class="breakdown-label"><strong>Minusstunden gesamt</strong></span>
+                    <span class="breakdown-value" id="berechnung-formel"><strong>47,2 + 47,2 = 94,4 Schulstd. = 70,8 Zeitstd.</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">✍️</div>
+                <h2 class="card-title">Klausurkorrekturen</h2>
+            </div>
+
+            <div class="info-box">
+                <p>
+                    <strong>Zeitaufwand pro Schüler:</strong><br>
+                    Erstkorrektur LK: <strong>2,0 Zeitstunden</strong> · 
+                    Erstkorrektur GK: <strong>1,5 Zeitstunden</strong> · 
+                    Zweitkorrektur: <strong>0,5 Zeitstunden</strong>
+                </p>
+            </div>
+
+            <div id="korrektur-container">
+                <!-- Dynamisch generierte Korrekturklassen -->
+            </div>
+
+            <button class="add-korrektur-btn" id="add-korrektur">
+                <span class="add-icon">+</span>
+                <span>Korrekturklasse hinzufügen</span>
+            </button>
+
+            <div class="korrektur-summe">
+                <div class="summe-label">Korrekturaufwand gesamt</div>
+                <div class="summe-row">
+                    <div class="summe-value" id="korrektur-gesamt-zeit">0,0</div>
+                    <span class="summe-unit">Zeitstunden</span>
+                    <span class="summe-divider">=</span>
+                    <div class="summe-value" id="korrektur-gesamt-schul">0,0</div>
+                    <span class="summe-unit">Schulstunden</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bilanz-card">
+            <div class="card-header">
+                <div class="card-icon">⚖️</div>
+                <h2 class="card-title">Gesamtbilanz</h2>
+            </div>
+
+            <div class="bilanz-grid">
+                <div class="bilanz-item negative">
+                    <div class="bilanz-label">Minusstunden</div>
+                    <div class="bilanz-value" id="bilanz-minus">− 70,8</div>
+                    <span class="bilanz-unit">Zeitstunden</span>
+                </div>
+                <div class="bilanz-operator">+</div>
+                <div class="bilanz-item positive">
+                    <div class="bilanz-label">Korrekturaufwand</div>
+                    <div class="bilanz-value" id="bilanz-korrektur">+ 40,0</div>
+                    <span class="bilanz-unit">Zeitstunden</span>
+                </div>
+                <div class="bilanz-operator">=</div>
+                <div class="bilanz-item result" id="bilanz-result-box">
+                    <div class="bilanz-label">Saldo</div>
+                    <div class="bilanz-value" id="bilanz-saldo">− 30,8</div>
+                    <span class="bilanz-unit" id="bilanz-saldo-text">Zeitstunden (Minusstunden verbleiben)</span>
+                </div>
+            </div>
+
+            <div class="bilanz-bar-container">
+                <div class="bilanz-bar">
+                    <div class="bilanz-bar-minus" id="bar-minus"></div>
+                    <div class="bilanz-bar-korrektur" id="bar-korrektur"></div>
+                </div>
+                <div class="bilanz-bar-labels">
+                    <span>Minusstunden</span>
+                    <span>Korrektur der Prüfungsklassen</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">💡</div>
+                <h2 class="card-title">Einordnung im Modell 1886</h2>
+            </div>
+            <p style="color: var(--soft-gray); margin-bottom: 1rem;">
+                Die entfallenden Stunden betreffen sowohl den <strong>Unterricht</strong> als auch die 
+                <strong>unterrichtsnahen Tätigkeiten</strong> (Kategorie 1), da Vor- und Nachbereitung, 
+                Korrekturen und Schülergespräche für diese Klassen ebenfalls wegfallen.
+            </p>
+            <p style="color: var(--soft-gray);">
+                Die <strong>Abiturklausur-Korrekturen</strong> fallen jedoch weiterhin an und können 
+                gegen die Minusstunden verrechnet werden. Die Gesamtbilanz zeigt, ob nach der Verrechnung 
+                noch Minusstunden verbleiben oder sogar Mehrarbeit entsteht.
+            </p>
+        </div>
+
+        <footer>
+            <p>Modell 1886 | Arbeitsgruppe Anrechnungsstunden & Wertrechnung | EBK Neuss</p>
+        </footer>
+    </div>
+
+    <script>
+        // Unterrichtsausfall-Elemente
+        const slider = document.getElementById('stunden-slider');
+        const stundenValue = document.getElementById('stunden-value');
+        const unterrichtAusfall = document.getElementById('unterricht-ausfall');
+        const unterrichtZeit = document.getElementById('unterricht-zeit');
+        const kat1Entlastung = document.getElementById('kat1-entlastung');
+        const kat1Zeit = document.getElementById('kat1-zeit');
+        const minusStunden = document.getElementById('minus-stunden');
+        const minusZeit = document.getElementById('minus-zeit');
+        const berechnungUnterricht = document.getElementById('berechnung-unterricht');
+        const berechnungKat1 = document.getElementById('berechnung-kat1');
+        const berechnungFormel = document.getElementById('berechnung-formel');
+        const anteilBar = document.getElementById('anteil-bar');
+
+        // Korrektur-Elemente
+        const korrekturContainer = document.getElementById('korrektur-container');
+        const addKorrekturBtn = document.getElementById('add-korrektur');
+        const korrekturGesamtZeit = document.getElementById('korrektur-gesamt-zeit');
+        const korrekturGesamtSchul = document.getElementById('korrektur-gesamt-schul');
+
+        // Bilanz-Elemente
+        const bilanzMinus = document.getElementById('bilanz-minus');
+        const bilanzKorrektur = document.getElementById('bilanz-korrektur');
+        const bilanzSaldo = document.getElementById('bilanz-saldo');
+        const bilanzSaldoText = document.getElementById('bilanz-saldo-text');
+        const bilanzResultBox = document.getElementById('bilanz-result-box');
+        const barMinus = document.getElementById('bar-minus');
+        const barKorrektur = document.getElementById('bar-korrektur');
+
+        // Konstanten
+        const EFFEKTIVE_WOCHEN = 11.8;
+        const HALBJAHR_DEPUTAT = 25.5 * 20;
+        const SCHULSTUNDE_ZU_ZEITSTUNDE = 0.75;
+        const ZEITSTUNDE_ZU_SCHULSTUNDE = 1 / 0.75;
+
+        const KORREKTUR_FAKTOREN = {
+            lk: { faktor: 2.0, label: 'Leistungskurs', short: 'LK' },
+            gk: { faktor: 1.5, label: 'Grundkurs', short: 'GK' },
+            zweit: { faktor: 0.5, label: 'Zweitkorrektur', short: '2.' }
+        };
+
+        // Korrekturklassen-Verwaltung
+        let korrekturKlassen = [];
+        let korrekturIdCounter = 0;
+
+        function formatNumber(num) {
+            return num.toLocaleString('de-DE', { 
+                minimumFractionDigits: 1, 
+                maximumFractionDigits: 1 
+            });
+        }
+
+        function createKorrekturKlasse(id) {
+            const div = document.createElement('div');
+            div.className = 'korrektur-klasse';
+            div.dataset.id = id;
+            
+            div.innerHTML = `
+                <div class="korrektur-header">
+                    <span class="korrektur-nummer">Korrekturklasse ${korrekturKlassen.length + 1}</span>
+                    <button class="remove-korrektur" data-id="${id}" title="Entfernen">×</button>
+                </div>
+                <div class="korrektur-row">
+                    <div class="korrektur-schueler">
+                        <label>Schüler*innen</label>
+                        <div class="schueler-input-group">
+                            <input type="number" class="schueler-input" data-id="${id}" min="1" max="40" value="20">
+                            <span class="schueler-input-label">SuS</span>
+                        </div>
+                    </div>
+                    <div class="kursart-mini">
+                        <label class="kursart-mini-option">
+                            <input type="radio" name="kursart-${id}" value="lk" checked>
+                            <span class="kursart-mini-btn">
+                                <span class="kursart-mini-title">Leistungskurs</span>
+                                <span class="kursart-mini-factor">2,0 Std./SuS</span>
+                            </span>
+                        </label>
+                        <label class="kursart-mini-option">
+                            <input type="radio" name="kursart-${id}" value="gk">
+                            <span class="kursart-mini-btn">
+                                <span class="kursart-mini-title">Grundkurs</span>
+                                <span class="kursart-mini-factor">1,5 Std./SuS</span>
+                            </span>
+                        </label>
+                        <label class="kursart-mini-option">
+                            <input type="radio" name="kursart-${id}" value="zweit">
+                            <span class="kursart-mini-btn">
+                                <span class="kursart-mini-title">Zweitkorrektur</span>
+                                <span class="kursart-mini-factor">0,5 Std./SuS</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="korrektur-ergebnis">
+                    <div class="korrektur-ergebnis-item">
+                        <div class="korrektur-ergebnis-label">Aufwand</div>
+                        <div class="korrektur-ergebnis-value"><span class="einzelaufwand-zeit" data-id="${id}">40,0</span> Zeitstd.</div>
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        function addKorrekturKlasse() {
+            const id = korrekturIdCounter++;
+            korrekturKlassen.push({ id, schueler: 20, kursart: 'lk' });
+            
+            const element = createKorrekturKlasse(id);
+            korrekturContainer.appendChild(element);
+            
+            // Event Listeners hinzufügen
+            element.querySelector('.schueler-input').addEventListener('input', (e) => {
+                const klasseId = parseInt(e.target.dataset.id);
+                const klasse = korrekturKlassen.find(k => k.id === klasseId);
+                if (klasse) {
+                    klasse.schueler = parseInt(e.target.value) || 0;
+                    updateCalculation();
+                }
+            });
+            
+            element.querySelectorAll(`input[name="kursart-${id}"]`).forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const klasseId = parseInt(id);
+                    const klasse = korrekturKlassen.find(k => k.id === klasseId);
+                    if (klasse) {
+                        klasse.kursart = e.target.value;
+                        updateCalculation();
+                    }
+                });
+            });
+            
+            element.querySelector('.remove-korrektur').addEventListener('click', (e) => {
+                const klasseId = parseInt(e.target.dataset.id);
+                removeKorrekturKlasse(klasseId);
+            });
+            
+            updateCalculation();
+            updateKorrekturNummern();
+        }
+
+        function removeKorrekturKlasse(id) {
+            korrekturKlassen = korrekturKlassen.filter(k => k.id !== id);
+            const element = korrekturContainer.querySelector(`[data-id="${id}"]`);
+            if (element) {
+                element.remove();
+            }
+            updateCalculation();
+            updateKorrekturNummern();
+        }
+
+        function updateKorrekturNummern() {
+            const klassen = korrekturContainer.querySelectorAll('.korrektur-klasse');
+            klassen.forEach((el, index) => {
+                el.querySelector('.korrektur-nummer').textContent = `Korrekturklasse ${index + 1}`;
+            });
+        }
+
+        function berechneKorrekturGesamt() {
+            let gesamtZeit = 0;
+            
+            korrekturKlassen.forEach(klasse => {
+                const faktor = KORREKTUR_FAKTOREN[klasse.kursart].faktor;
+                const aufwand = klasse.schueler * faktor;
+                gesamtZeit += aufwand;
+                
+                // Einzelaufwand aktualisieren
+                const einzelElement = document.querySelector(`.einzelaufwand-zeit[data-id="${klasse.id}"]`);
+                if (einzelElement) {
+                    einzelElement.textContent = formatNumber(aufwand);
+                }
+            });
+            
+            return gesamtZeit;
+        }
+
+        function updateCalculation() {
+            const stunden = parseInt(slider.value);
+            
+            // Unterricht und Kategorie 1 (jeweils gleich)
+            const ausfallSchulstunden = stunden * EFFEKTIVE_WOCHEN;
+            const ausfallZeitstunden = ausfallSchulstunden * SCHULSTUNDE_ZU_ZEITSTUNDE;
+            
+            // Minusstunden = Summe aus Unterricht + Kategorie 1
+            const minusSchulstundenTotal = ausfallSchulstunden * 2;
+            const minusZeitstundenTotal = minusSchulstundenTotal * SCHULSTUNDE_ZU_ZEITSTUNDE;
+            
+            // Anteil berechnen
+            const anteil = (minusSchulstundenTotal / (HALBJAHR_DEPUTAT * 2)) * 100;
+
+            // UI aktualisieren - Unterrichtsausfall
+            stundenValue.textContent = stunden;
+            
+            unterrichtAusfall.textContent = formatNumber(ausfallSchulstunden);
+            unterrichtZeit.textContent = formatNumber(ausfallZeitstunden) + ' Zeitstunden';
+            
+            kat1Entlastung.textContent = formatNumber(ausfallSchulstunden);
+            kat1Zeit.textContent = formatNumber(ausfallZeitstunden) + ' Zeitstunden';
+            
+            minusStunden.textContent = formatNumber(minusSchulstundenTotal);
+            minusZeit.textContent = formatNumber(minusZeitstundenTotal);
+            
+            berechnungUnterricht.textContent = `${stunden} Std./Wo. × ${EFFEKTIVE_WOCHEN} Wo. = ${formatNumber(ausfallSchulstunden)} Schulstd.`;
+            berechnungKat1.textContent = `= ${formatNumber(ausfallSchulstunden)} Schulstd.`;
+            berechnungFormel.innerHTML = `<strong>${formatNumber(ausfallSchulstunden)} + ${formatNumber(ausfallSchulstunden)} = ${formatNumber(minusSchulstundenTotal)} Schulstd. = ${formatNumber(minusZeitstundenTotal)} Zeitstd.</strong>`;
+            
+            anteilBar.style.width = `${Math.min(anteil, 100)}%`;
+
+            // Korrektur berechnen
+            const korrekturZeitstunden = berechneKorrekturGesamt();
+            const korrekturSchulstunden = korrekturZeitstunden * ZEITSTUNDE_ZU_SCHULSTUNDE;
+
+            korrekturGesamtZeit.textContent = formatNumber(korrekturZeitstunden);
+            korrekturGesamtSchul.textContent = formatNumber(korrekturSchulstunden);
+
+            // Bilanz berechnen
+            const saldo = korrekturZeitstunden - minusZeitstundenTotal;
+            
+            bilanzMinus.textContent = '− ' + formatNumber(minusZeitstundenTotal);
+            bilanzKorrektur.textContent = '+ ' + formatNumber(korrekturZeitstunden);
+            
+            if (saldo >= 0) {
+                bilanzSaldo.textContent = '+ ' + formatNumber(saldo);
+                bilanzSaldoText.textContent = 'Zeitstunden (Mehrarbeit)';
+                bilanzResultBox.classList.add('surplus');
+            } else {
+                bilanzSaldo.textContent = '− ' + formatNumber(Math.abs(saldo));
+                bilanzSaldoText.textContent = 'Zeitstunden (Minusstunden verbleiben)';
+                bilanzResultBox.classList.remove('surplus');
+            }
+
+            // Bilanz-Balken
+            const totalForBar = minusZeitstundenTotal + korrekturZeitstunden;
+            if (totalForBar > 0) {
+                barMinus.style.width = `${(minusZeitstundenTotal / totalForBar) * 100}%`;
+                barKorrektur.style.width = `${(korrekturZeitstunden / totalForBar) * 100}%`;
+            } else {
+                barMinus.style.width = '100%';
+                barKorrektur.style.width = '0%';
+            }
+        }
+
+        // Event Listeners
+        slider.addEventListener('input', updateCalculation);
+        addKorrekturBtn.addEventListener('click', addKorrekturKlasse);
+
+        // Initial: Eine Korrekturklasse hinzufügen
+        addKorrekturKlasse();
+    </script>
+</body>
+</html>
